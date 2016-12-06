@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+    <appender class="org.apache.log4j.ConsoleAppender" name="ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] %l \: %m%n" />
+        </layout>
+    </appender>
+    
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="AllFileAppender">
+        <param name="File" value="logs/core-base.log" />
+        <param name="Append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] %l \: %m%n" />
+        </layout>
+    </appender>
+    
+    <logger additivity="false" name="com.lenovo">
+        <level value="DEBUG" />
+        <appender-ref ref="AllFileAppender" />
+        <appender-ref ref="ConsoleAppender" />
+    </logger>
+
+    <root>
+        <level value="DEBUG" />
+        <appender-ref ref="AllFileAppender" />
+        <appender-ref ref="ConsoleAppender" />
+    </root>
+</log4j:configuration>
